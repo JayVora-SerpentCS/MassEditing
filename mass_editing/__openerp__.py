@@ -21,7 +21,7 @@
 {
     "name" : "Mass Editing",
     "version" : "1.3",
-    "author" : "Serpent Consulting Services",
+    "author" : "Serpent Consulting Services Pvt. Ltd.",
     "category" : "Tools",
     "website" : "http://www.serpentcs.com",
     "description": """This module provides the functionality to add, update or remove the values of more than one records on the fly at the same time.

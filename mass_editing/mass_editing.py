@@ -102,7 +102,6 @@ class mass_object(models.Model):
                 })
         return True
 
-
     @api.one
     def unlink_action(self):
                 if self.ref_ir_act_window:
