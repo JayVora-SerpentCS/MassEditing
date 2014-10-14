@@ -19,28 +19,28 @@
 #
 ##############################################################################
 
-from openerp import models,fields,api,tools,_
+from openerp import models, fields, api, tools, _
 from lxml import etree
 
 
 class mass_editing_wizard(models.Model):
     _name = 'mass.editing.wizard'
 
-    @api.model
-    def fields_view_get(self,view_type='form',view_id=None):
-      result = super(mass_editing_wizard,self).fields_view_get(view_type,view_id)
+    def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
+      if context is None:
+          context = {}
+      result = super(mass_editing_wizard, self).fields_view_get(cr, uid, view_id, view_type, context=context, toolbar=toolbar, submenu=submenu)
     
-      if self._context.get('mass_editing_object'):
-            mass_object = self.env['mass.object'] 
-            editing_data = mass_object.browse(self._context.get('mass_editing_object'))
+      if context.get('mass_editing_object'):
+            mass_object = self.pool['mass.object'] 
+            editing_data = mass_object.browse(cr, uid, context.get('mass_editing_object'))
             all_fields = {}
             xml_form = etree.Element('form', {'string': tools.ustr(editing_data.name), 'version':'7.0'})
             xml_group = etree.SubElement(xml_form, 'group', {'colspan': '4'})
             etree.SubElement(xml_group, 'label', {'string': '', 'colspan': '2'})
             xml_group = etree.SubElement(xml_form, 'group', {'colspan': '4'})
-            model_obj = self.env[self._context.get('active_model')]
-            field_info = model_obj.fields_get([])
-  
+            model_obj = self.pool[context.get('active_model')]
+            field_info = model_obj.fields_get(cr, uid)
             for field in editing_data.field_ids:
                 if field.ttype == "many2many":
                     all_fields[field.name] = field_info[field.name] 
@@ -57,9 +57,9 @@ class mass_editing_wizard(models.Model):
                     all_fields[field.name] = {'type':field.ttype,
                         'string': field.field_description,
                         'relation': field.relation}
-                    etree.SubElement(xml_group, 'field', 
+                    etree.SubElement(xml_group, 'field',
                         {'name': "selection__" + field.name, 'colspan':'2'})
-                    etree.SubElement(xml_group, 'field', 
+                    etree.SubElement(xml_group, 'field',
                         {'name': field.name, 'colspan':'4', 'nolabel':'1',
                             'attrs':"{'invisible':[('selection__" + field.name + "','=','remove_o2m')]}"})
                 elif field.ttype == "many2one":
@@ -99,21 +99,21 @@ class mass_editing_wizard(models.Model):
       return result
     
     @api.model
-    def create(self,vals):
+    def create(self, vals):
         if self._context.get('active_model') and self._context.get('active_ids'):
             model_obj = self.env[self._context.get('active_model')]
             dict = {}
-            for key ,val in vals.items():
+            for key , val in vals.items():
                 
                 if key.startswith('selection_'):
-                    split_key= key.split('__',1)[1]
+                    split_key = key.split('__', 1)[1]
                     if val == 'set':
                         dict.update({split_key: vals.get(split_key, False)})
                         print dict
                     elif val == 'remove':
                         dict.update({split_key: False})
                     elif val == 'remove_m2m':
-                        dict.update({split_key: [(5,0,[])]})
+                        dict.update({split_key: [(5, 0, [])]})
                     elif val == 'add':
                         m2m_list = []
                         for m2m_id in vals.get(split_key, False)[0][2]:
