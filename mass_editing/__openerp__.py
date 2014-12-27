@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name" : "Mass Editing",
-    "version" : "1.3",
+    "version" : "1.4",
     "author" : "Serpent Consulting Services Pvt. Ltd.",
     "category" : "Tools",
     "website" : "http://www.serpentcs.com",
