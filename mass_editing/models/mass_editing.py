@@ -25,7 +25,7 @@ from lxml import etree
 class ir_model_fields(models.Model):
     _inherit = 'ir.model.fields'
 
-    @api.returns('self') #If we keep @api.v7, we have to add @api.v8 code too.
+    @api.returns('self')  # If we keep @api.v7, we have to add @api.v8 code too.
     def search(self, cr, uid, args, offset=0, limit=0, order=None, context=None, count=False):
         model_domain = []
         for domain in args:
@@ -45,9 +45,6 @@ class ir_model_fields(models.Model):
 #             else:
 #                 model_domain.append(domain)
 #         return super(ir_model_fields, self).search(model_domain, offset=offset, limit=limit, order=order, count=count)
-
-
-ir_model_fields()
 
 class mass_object(models.Model):
     _name = "mass.object"
@@ -137,5 +134,17 @@ class mass_object(models.Model):
         default.update({'name':'', 'field_ids': []})
         return super(mass_object, self).copy(default)
 
-mass_object()
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+class ir_module_module(models.Model):
+
+    _inherit = 'ir.module.module'
+    
+    @api.multi
+    def module_uninstall(self):
+        cr, uid, context = self.env.args
+        action_obj = self.pool.get('ir.actions.act_window')
+        # search window actions of mass editing  and delete it
+        if self.name == 'mass_editing':
+            action_ids = action_obj.search (cr, uid, [('res_model', '=', 'mass.editing.wizard')], context=context)
+            action_obj.unlink(cr, uid, action_ids, context=context)
+        return super(ir_module_module, self).module_uninstall()
+    
