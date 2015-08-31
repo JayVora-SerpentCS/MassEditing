@@ -127,6 +127,3 @@ class mass_editing_wizard(models.Model):
     @api.v7
     def action_apply(self, cr, uid, ids, context=None):
         return  {'type': 'ir.actions.act_window_close'}
-
-mass_editing_wizard()
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

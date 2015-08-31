@@ -1,6 +1,9 @@
 ===============================================================================
  Version Change Log (mass_editing)
 ===============================================================================
+1.6 * Aug 31, 2015 : Serpent Consulting Services Pvt Ltd
+    * Resolved the error of module Uninstall.
+
 1.5 * Apr 27, 2015 : Serpent Consulting Services Pvt Ltd
 	* Made the search() of ir.model.fields v8 compatible. Thanks to Jonathan Wilson of WillowIT 
 	  for the fix and Luke branch for reporting.
