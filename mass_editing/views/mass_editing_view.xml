@@ -68,7 +68,7 @@
             <field name="act_window_id" ref="action_mass_object_form"/>
         </record>
 
-        <menuitem id="menu_mass_editing" name="Mass Editing" parent="base.menu_config" sequence="6"/>
+        <menuitem id="menu_mass_editing" name="Mass Editing" parent="base.menu_administration" sequence="6"/>
 
         <menuitem id="menu_mass_object_view" action="action_mass_object_form" parent="menu_mass_editing"/>
 
