@@ -19,8 +19,7 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api, tools, _
-from lxml import etree
+from openerp import models, fields, api, _
 
 class ir_model_fields(models.Model):
     _inherit = 'ir.model.fields'
@@ -35,7 +34,7 @@ class ir_model_fields(models.Model):
                 model_domain.append(domain)
         return super(ir_model_fields, self).search(cr, uid, model_domain, offset=offset, limit=limit, order=order, context=context, count=count)
 
-    
+
 #     @api.v8
 #     def search(self, args, offset=0, limit=0, order=None, count=False):
 #         model_domain = []
