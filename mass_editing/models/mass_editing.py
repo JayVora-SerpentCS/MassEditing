@@ -121,7 +121,7 @@ class MassObject(models.Model):
     def copy(self, default):
         if default is None:
             default = {}
-        default.update({'name':'', 'field_ids': []})
+        default.update({'name': _("%s (copy)" % self.name), 'field_ids': []})
         return super(MassObject, self).copy(default)
 
 class IrModuleModule(models.Model):
@@ -130,10 +130,11 @@ class IrModuleModule(models.Model):
 
     @api.multi
     def module_uninstall(self):
-        cr, uid, context = self.env.args
-        action_obj = self.pool.get('ir.actions.act_window')
         # search window actions of mass editing  and delete it
         if self.name == 'mass_editing':
-            action_ids = action_obj.search (cr, uid, [('res_model', '=', 'mass.editing.wizard')], context=context)
-            action_obj.unlink(cr, uid, action_ids, context=context)
+            values_obj = self.env['ir.values']
+            actions = self.env['ir.actions.act_window'].search ([('res_model', '=', 'mass.editing.wizard')])
+            for action in actions:
+                values_obj.search([('value', '=', 'ir.actions.act_window,%s' % action.id)]).unlink()
+            actions.unlink()
         return super(IrModuleModule, self).module_uninstall()
