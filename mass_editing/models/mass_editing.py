@@ -42,8 +42,8 @@ class IrModelFields(models.Model):
             cr, uid, model_domain, offset=offset, limit=limit, order=order,
             context=context, count=count
         )
-    
-class mass_object(models.Model):
+
+class MassObject(models.Model):
     _name = "mass.object"
 
     name = fields.Char(string="Name", required=True, select=1)
@@ -70,8 +70,6 @@ class mass_object(models.Model):
             self.model_ids = [(6, 0, [])]
 
         model_ids = [self.model_id.id]
-        model_obj = self.env['ir.model']
-        # active_model_obj = self.env[model_obj.browse(self.model_id.id).model]
         self.model_ids = [[6, 0, model_ids]]
         self.model_list = [self.model_ids.id]
 
@@ -79,7 +77,6 @@ class mass_object(models.Model):
     def create_action(self):
         vals = {}
         action_obj = self.env['ir.actions.act_window']
-        data_obj = self.env['ir.model.data']
         src_obj = self.model_id.model
         button_name = _('Mass Editing (%s)') % self.name
         vals['ref_ir_act_window'] = action_obj.create({
@@ -110,31 +107,27 @@ class mass_object(models.Model):
 
     @api.one
     def unlink_action(self):
-                if self.ref_ir_act_window:
-                    winid = self.ref_ir_act_window.id
-                    self.env['ir.actions.act_window'].search([('id', '=', winid)]).unlink()
-
-                if self.ref_ir_value:
-                    uinid = self.ref_ir_value.id
-                    self.env['ir_values'].search([('id', '=', uinid)]).unlink()
+        if self.ref_ir_act_window:
+            self.env['ir.actions.act_window'].search([('id', '=', self.ref_ir_act_window.id)]).unlink()
+        if self.ref_ir_value:
+            self.env['ir_values'].search([('id', '=', self.ref_ir_value.id)]).unlink()
 
     @api.one
     def unlink(self):
         self.unlink_action()
-        return super(mass_object, self).unlink()
+        return super(MassObject, self).unlink()
 
     @api.multi
     def copy(self, default):
         if default is None:
             default = {}
-
         default.update({'name':'', 'field_ids': []})
-        return super(mass_object, self).copy(default)
+        return super(MassObject, self).copy(default)
 
-class ir_module_module(models.Model):
+class IrModuleModule(models.Model):
 
     _inherit = 'ir.module.module'
-    
+
     @api.multi
     def module_uninstall(self):
         cr, uid, context = self.env.args
@@ -143,5 +136,4 @@ class ir_module_module(models.Model):
         if self.name == 'mass_editing':
             action_ids = action_obj.search (cr, uid, [('res_model', '=', 'mass.editing.wizard')], context=context)
             action_obj.unlink(cr, uid, action_ids, context=context)
-        return super(ir_module_module, self).module_uninstall()
-    
+        return super(IrModuleModule, self).module_uninstall()

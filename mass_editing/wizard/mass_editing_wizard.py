@@ -27,11 +27,10 @@ class mass_editing_wizard(models.Model):
     _name = 'mass.editing.wizard'
 
     def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
-      if context is None:
-          context = {}
-      result = super(mass_editing_wizard, self).fields_view_get(cr, uid, view_id, view_type, context=context, toolbar=toolbar, submenu=submenu)
-    
-      if context.get('mass_editing_object'):
+        if context is None:
+            context = {}
+        result = super(mass_editing_wizard, self).fields_view_get(cr, uid, view_id, view_type, context=context, toolbar=toolbar, submenu=submenu)
+        if context.get('mass_editing_object'):
             mass_object = self.pool['mass.object'] 
             editing_data = mass_object.browse(cr, uid, context.get('mass_editing_object'))
             all_fields = {}
@@ -96,33 +95,30 @@ class mass_editing_wizard(models.Model):
             root = xml_form.getroottree()
             result['arch'] = etree.tostring(root)
             result['fields'] = all_fields
-      return result
-    
+        return result
+
     @api.model
     def create(self, vals):
         if self._context.get('active_model') and self._context.get('active_ids'):
             model_obj = self.env[self._context.get('active_model')]
-            dict = {}
+            values = {}
             for key , val in vals.items():
-                
                 if key.startswith('selection_'):
                     split_key = key.split('__', 1)[1]
                     if val == 'set':
-                        dict.update({split_key: vals.get(split_key, False)})
-                        print dict
+                        values.update({split_key: vals.get(split_key, False)})
                     elif val == 'remove':
-                        dict.update({split_key: False})
+                        values.update({split_key: False})
                     elif val == 'remove_m2m':
-                        dict.update({split_key: [(5, 0, [])]})
+                        values.update({split_key: [(5, 0, [])]})
                     elif val == 'add':
                         m2m_list = []
                         for m2m_id in vals.get(split_key, False)[0][2]:
                             m2m_list.append((4, m2m_id))
-                        dict.update({split_key: m2m_list})
-            if dict:
-               model_obj.browse(self._context.get('active_ids')).write(dict)
-        result = super(mass_editing_wizard, self).create({})
-        return result
+                        values.update({split_key: m2m_list})
+            if values:
+                model_obj.browse(self._context.get('active_ids')).write(values)
+        return super(mass_editing_wizard, self).create({})
 
     @api.v7
     def action_apply(self, cr, uid, ids, context=None):
