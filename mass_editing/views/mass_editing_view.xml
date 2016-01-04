@@ -10,8 +10,7 @@
                 <form string="Object">
                     <group>
                     <field name="name"/>
-                    <field name="model_id"/>
-                    <field name="model_ids" invisible="1"/>
+                    <field name="model_id" attrs="{'readonly':[('ref_ir_act_window','!=',False)]}"/>
                     <field name="model_list" invisible="1"/>
                     </group>
                     <notebook colspan="4">
