@@ -96,9 +96,9 @@ class mass_editing_wizard(models.Model):
                                       'name': field.name,
                                       'colspan': '6',
                                       'nolabel': '1',
-                                      'attrs': "{'invisible':[('selection__" \
-                                               + field.name + \
-                                               "','=','remove_m2m')]}"
+                                      'attrs': ("{'invisible':[('selection__" \
+                                                + field.name + \
+                                                "','=','remove_m2m')]}")
                                       }
                                      )
                 elif field.ttype == "one2many":
@@ -125,9 +125,9 @@ class mass_editing_wizard(models.Model):
                                        'name': field.name,
                                        'colspan': '6',
                                        'nolabel': '1',
-                                       'attrs': "{'invisible':[('selection__" \
-                                                + field.name + \
-                                                "','=','remove_o2m')]}"
+                                       'attrs': ("{'invisible':[('selection__"\
+                                                 + field.name + \
+                                                 "','=','remove_o2m')]}")
                                         }
                                     )
                 elif field.ttype == "many2one":
@@ -155,9 +155,9 @@ class mass_editing_wizard(models.Model):
                                        'name': field.name,
                                        'nolabel': '1',
                                        'colspan': '4',
-                                       'attrs': "{'invisible':[('selection__" \
-                                                + field.name + \
-                                                "','=','remove')]}"
+                                       'attrs': ("{'invisible':[('selection__"\
+                                                 + field.name + \
+                                                 "','=','remove')]}")
                                        }
                                      )
                 elif field.ttype == "char":
@@ -182,9 +182,9 @@ class mass_editing_wizard(models.Model):
                     etree.SubElement(xml_group, 'field', {
                                        'name': field.name,
                                        'nolabel': '1',
-                                       'attrs': "{'invisible':[('selection__" \
+                                       'attrs': ("{'invisible':[('selection__"\
                                                  + field.name + \
-                                                 "','=','remove')]}",
+                                                 "','=','remove')]}"),
                                        'colspan': '4'
                                        }
                                      )
@@ -206,9 +206,9 @@ class mass_editing_wizard(models.Model):
                                        'name': field.name,
                                        'nolabel': '1',
                                        'colspan': '4',
-                                       'attrs': "{'invisible':[('selection__" \
-                                                + field.name + \
-                                                "','=','remove')]}"
+                                       'attrs': ("{'invisible':[('selection__"\
+                                                 + field.name + \
+                                                 "','=','remove')]}")
                                             }
                                      )
                     all_fields[field.name] = {
@@ -250,9 +250,9 @@ class mass_editing_wizard(models.Model):
                                       'name': field.name,
                                       'colspan': '6',
                                       'nolabel': '1',
-                                      'attrs': "{'invisible':[('selection__" \
-                                              + field.name + \
-                                              "','=','remove')]}"
+                                      'attrs': ("{'invisible':[('selection__" \
+                                                + field.name + \
+                                                "','=','remove')]}")
                                       }
                                 )
                     else:
@@ -272,9 +272,9 @@ class mass_editing_wizard(models.Model):
                         etree.SubElement(xml_group, 'field', {
                                     'name': field.name,
                                     'nolabel': '1',
-                                    'attrs': "{'invisible':[('selection__" \
-                                            + field.name + \
-                                            "','=','remove')]}",
+                                    'attrs': ("{'invisible':[('selection__" \
+                                              + field.name + \
+                                              "','=','remove')]}"),
                                     'colspan': '4',
                                     }
                              )
@@ -305,8 +305,8 @@ class mass_editing_wizard(models.Model):
 
     @api.model
     def create(self, vals):
-        if self._context.get('active_model') \
-            and self._context.get('active_ids'):
+        if (self._context.get('active_model') \
+            and self._context.get('active_ids')):
             model_obj = self.env[self._context.get('active_model')]
             values = {}
             for key, val in vals.items():
@@ -329,4 +329,4 @@ class mass_editing_wizard(models.Model):
 
     @api.v7
     def action_apply(self, cr, uid, ids, context=None):
-        return  {'type': 'ir.actions.act_window_close'}
+        return {'type': 'ir.actions.act_window_close'}

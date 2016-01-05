@@ -52,18 +52,21 @@ class MassObject(models.Model):
 
     name = fields.Char(string="Name", required=True, select=1)
     model_id = fields.Many2one('ir.model', string='Model', required=True,
-                    help="Model is used for Selecting Fields,"
-                    " This is editable until Sidebar menu is not created")
+                               help="Model is used for Selecting Fields."
+                               "This is editable until Sidebar menu is not"
+                               " created")
     field_ids = fields.Many2many('ir.model.fields', 'mass_field_rel',
                                  'mass_id', 'field_id', string='Fields')
     ref_ir_act_window = fields.Many2one('ir.actions.act_window',
-                        string='Sidebar action',
-                        readonly=True,
-                        help="Sidebar action to make this template available"
-                             "on records of the related document model")
+                                        string='Sidebar action',
+                                        readonly=True,
+                                        help="Sidebar action to make this "
+                                            "template available on records of"
+                                            "the related document model")
     ref_ir_value = fields.Many2one('ir.values', string='Sidebar button',
-                        readonly=True,
-                        help="Sidebar button to open the sidebar action")
+                                   readonly=True,
+                                   help="Sidebar button to open"
+                                        "the sidebar action")
 
     model_list = fields.Char(string='Model List', size=256)
 
@@ -83,8 +86,8 @@ class MassObject(models.Model):
                 for key, val in active_model_obj._inherits.items():
                     inherits_model_list = model_obj.search(
                                             [('model', '=', key)])
-                    model_list.extend(inherits_model_list and \
-                                      inherits_model_list.ids or [])
+                    model_list.extend((inherits_model_list and \
+                                       inherits_model_list.ids or []))
         self.model_list = model_list
 
     @api.multi
