@@ -2,7 +2,8 @@
 ##############################################################################
 #
 #    This module uses OpenERP, Open Source Management Solution Framework.
-#    Copyright (C) 2012-Today Serpent Consulting Services (<http://www.serpentcs.com>)
+#    Copyright (C) 2012-Today Serpent Consulting Services.
+#    (<http://www.serpentcs.com>)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -19,14 +20,14 @@
 #
 ##############################################################################
 {
-    "name" : "Mass Editing",
-    "version" : "2.0",
-    "author" : "Serpent Consulting Services Pvt. Ltd.",
-    "category" : "Tools",
-    "website" : "http://www.serpentcs.com",
-    "description": """This module provides the functionality to add, update or remove the values of more than one records on the fly at the same time.
-        You can configure mass editing for any ODOO model. 
-    . 
+    "name": "Mass Editing",
+    "version": "2.0",
+    "author": "Serpent Consulting Services Pvt. Ltd.",
+    "category": "Tools",
+    "website": "http://www.serpentcs.com",
+    "description": """This module provides the below functionality:
+        Add, update or remove the values of more than one records on the fly at
+        the same time. You can configure mass editing for any ODOO model.
     """,
     'depends': ['base'],
     'data': [
