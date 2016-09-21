@@ -3,6 +3,7 @@
 # * mass_editing
 # 
 # Translators:
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2016
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
@@ -11,11 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2016-09-10 02:53+0000\n"
 "PO-Revision-Date: 2016-09-10 02:53+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
+"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: mass_editing
@@ -32,31 +33,31 @@ msgstr ""
 #. module: mass_editing
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
 msgid "Advanced"
-msgstr ""
+msgstr "Gelişmiş"
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_create_uid
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_create_uid
 msgid "Created by"
-msgstr "Créé par"
+msgstr "Oluşturan"
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_create_date
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_create_date
 msgid "Created on"
-msgstr "Date"
+msgstr "Oluşturuldu"
 
 #. module: mass_editing
 #: code:addons/mass_editing/models/mass_object.py:89
 #, python-format
 msgid "Deletion of the action record failed."
-msgstr "La suppression de l'enregistrement de l'action a échoué."
+msgstr "eylem kaydı silinemedi."
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_display_name
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_display_name
 msgid "Display Name"
-msgstr "Nom à afficher"
+msgstr ""
 
 #. module: mass_editing
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
@@ -64,13 +65,15 @@ msgid ""
 "Display a button in the sidebar of related documents to open a composition "
 "wizard"
 msgstr ""
+"ilgili modelin \"DEVAMI\" menüsüne değiştirme sihirbazı açan bir eylem "
+"ekler."
 
 #. module: mass_editing
 #: model:ir.model,name:mass_editing.model_ir_model_fields
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_field_ids
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
 msgid "Fields"
-msgstr "Champs"
+msgstr "Alanlar"
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_id
@@ -82,32 +85,32 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard___last_update
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object___last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr ""
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_write_uid
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr "Son güncelleyen"
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_editing_wizard_write_date
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr "Son güncelleme"
 
 #. module: mass_editing
 #: model:ir.actions.act_window,name:mass_editing.action_mass_object_form
 #: model:ir.ui.menu,name:mass_editing.menu_mass_editing
 #: model:ir.ui.menu,name:mass_editing.menu_mass_object_view
 msgid "Mass Editing"
-msgstr "Édition en lot"
+msgstr "Toplu düzenleme"
 
 #. module: mass_editing
 #: code:addons/mass_editing/models/mass_object.py:58
 #, python-format
 msgid "Mass Editing (%s)"
-msgstr "Édition en lot (%s)"
+msgstr "Toplu Düzenleme (%s)"
 
 #. module: mass_editing
 #: model:ir.model,name:mass_editing.model_mass_object
@@ -117,12 +120,12 @@ msgstr ""
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_model_id
 msgid "Model"
-msgstr "Modèle"
+msgstr "Model"
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_model_list
 msgid "Model List"
-msgstr ""
+msgstr "Model Listesi"
 
 #. module: mass_editing
 #: model:ir.model.fields,help:mass_editing.field_mass_object_model_id
@@ -134,20 +137,20 @@ msgstr ""
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_name
 msgid "Name"
-msgstr "Nom"
+msgstr "Adı"
 
 #. module: mass_editing
 #: code:addons/mass_editing/models/mass_object.py:34
 #: sql_constraint:mass.object:0
 #, python-format
 msgid "Name must be unique!"
-msgstr ""
+msgstr "Ad tekil olmalı!"
 
 #. module: mass_editing
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_tree
 msgid "Object"
-msgstr "Objet"
+msgstr "Nesne"
 
 #. module: mass_editing
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
@@ -157,7 +160,7 @@ msgstr ""
 #. module: mass_editing
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
 msgid "Remove the contextual action to use this template on related documents"
-msgstr ""
+msgstr "ilgili belgelerde kullanılacak bağlamsal eylemi kaldır. "
 
 #. module: mass_editing
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_ref_ir_act_window_id
