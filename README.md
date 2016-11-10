@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/JayVora-SerpentCS/MassEditing.svg?branch=10.0)](https://travis-ci.org/JayVora-SerpentCS/MassEditing)
 
 ============
 Mass Editing
