@@ -18,7 +18,7 @@ This module provides the following features:
 
 * The video explaining the features and how-to for Odoo v9 is here: https://www.youtube.com/watch?v=hTng8BIbrQw
 
-* The video explaining the features and how-to for Odoo v9 is here: https://www.youtube.com/watch?v=W1EHfyvX9WI
+* The video explaining the features and how-to for Odoo v10 is here: https://www.youtube.com/watch?v=W1EHfyvX9WI
 
 * For more details/customization/feedback contact us on contact@serpentcs.com
 
