@@ -41,4 +41,4 @@ Contributors
 * Jay Vora <jay.vora@serpentcs.com>
 
 
-To contribute to this module, please visit http://odoo-community.org.
+To contribute to this module, please visit https://odoo-community.org.
