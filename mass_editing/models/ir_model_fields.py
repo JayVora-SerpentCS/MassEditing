@@ -12,7 +12,8 @@ class IrModelFields(models.Model):
     def search(self, args, offset=0, limit=0, order=None, count=False):
         model_domain = []
         for domain in args:
-            if (len(domain) > 2 and domain[0] == 'model_id' and
+            if (len(domain) > 2 and
+                domain[0] == 'model_id' and
                 isinstance(domain[2], basestring) and
                 list(domain[2][1:-1])):
                 model_domain += [('model_id', 'in',
