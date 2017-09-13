@@ -149,8 +149,8 @@ class MassEditingWizard(models.TransientModel):
                         'name': "set_selection_" + field.name,
                         'nolabel': '1',
                         'colspan': '1',
-                        'attrs': "{'invisible': [('selection__"
-                        + field.name + "', 'in', ('remove', 'set')]}",
+                        'attrs': "{'invisible': [('selection__" +
+                        field.name + "', 'in', ('remove', 'set')]}",
                     })
                     etree.SubElement(xml_group, 'field', {
                         'name': field.name,
@@ -273,8 +273,8 @@ class MassEditingWizard(models.TransientModel):
             result['fields'] = all_fields
             doc = etree.XML(result['arch'])
             for field in editing_data.field_ids:
-                for node in doc.xpath("//field[@name='set_selection_"
-                                      + field.name + "']"):
+                for node in doc.xpath("//field[@name='set_selection_" +
+                                      field.name + "']"):
                     modifiers = json.loads(node.get("modifiers", '{}'))
                     modifiers.update({'invisible': [(
                         "selection__" + field.name, 'in', ('remove', 'set'))],
@@ -290,8 +290,9 @@ class MassEditingWizard(models.TransientModel):
                         attr_val = 'remove_m2m_all'
                     elif field.ttype == "one2many":
                         attr_val = 'remove_o2m'
-                    modifiers.update({'invisible': [(
-                         "selection__" + field.name, '=', attr_val)]})
+                    modifiers.update({'invisible': [
+                        ("selection__" + field.name, '=', attr_val)
+                    ]})
                     node.set("modifiers", json.dumps(modifiers))
             result['arch'] = etree.tostring(doc)
         return result
