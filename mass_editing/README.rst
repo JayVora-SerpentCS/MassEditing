@@ -16,10 +16,6 @@ This module provides the following features:
 
 * The video explaining the features and how-to for OpenERP Version 7 is here : http://www.youtube.com/watch?v=9BH0o74A748&feature=youtu.be
 
-* The video explaining the features and how-to for Odoo v9 is here: https://www.youtube.com/watch?v=hTng8BIbrQw
-
-* The video explaining the features and how-to for Odoo v10 is here: https://www.youtube.com/watch?v=W1EHfyvX9WI
-
 * For more details/customization/feedback contact us on contact@serpentcs.com
 
 Installation
@@ -37,6 +33,11 @@ To configure this module, you need to:
 Usage
 =====
 
+This module allows to add, update or remove the values of more than one records on the fly at the same time.
+
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/149/10.0
 
 As shown in figure you have to configure the object and fields for mass editing.
 
@@ -71,7 +72,11 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues
 <https://github.com/OCA/server-tools/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
-help us smashing it by providing a detailed and welcomed feedback.
+help us smashing it by providing a detailed and welcomed `feedback
+<https://github.com/OCA/
+server-tools/issues/new?body=module:%20
+server-tools%0Aversion:%20
+10.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Credits
 =======

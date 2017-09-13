@@ -2,8 +2,8 @@
 # © 2016 Serpent Consulting Services Pvt. Ltd. (support@serpentcs.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.exceptions import UserError
-from openerp import api, fields, models, _
+from odoo.exceptions import UserError
+from odoo import api, fields, models, _
 
 
 class MassObject(models.Model):
@@ -94,6 +94,7 @@ class MassObject(models.Model):
         self.unlink_action()
         return super(MassObject, self).unlink()
 
+    @api.multi
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
         if default is None:
