@@ -102,7 +102,7 @@ class MassEditingWizard(models.TransientModel):
                         'colspan': '6',
                         'nolabel': '1',
                         'attrs': ("{'invisible':[('selection__" +
-                        field.name + "', '=', 'remove_o2m')]}"),
+                                  field.name + "', '=', 'remove_o2m')]}"),
                     })
                 elif field.ttype == "many2one":
                     all_fields["selection__" + field.name] = {
