@@ -148,8 +148,8 @@ class MassEditingWizard(models.TransientModel):
                         'name': field.name,
                         'nolabel': '1',
                         'colspan': '1',
-                        'attrs': "{'invisible':[('selection__" +
-                        field.name + "', '=', 'remove')]}",
+                        'attrs': "{'invisible': [('selection__" +
+                        field.name + "', 'in', ('remove', 'set')]}",
                     })
                     # Add Copy field in view
                     etree.SubElement(xml_group, 'field', {
@@ -377,7 +377,8 @@ class MassEditingWizard(models.TransientModel):
             doc = etree.XML(result['arch'])
             for field in editing_data.field_ids:
                 for node in doc.xpath(
-                        "//field[@name='set_selection_" + field.name + "']"):
+                    "//field[@name='set_selection_" + field.name + "']"
+                ):
                     modifiers = json.loads(node.get("modifiers", '{}'))
                     modifiers.update({'invisible': [(
                         "selection__" + field.name, 'not in',
