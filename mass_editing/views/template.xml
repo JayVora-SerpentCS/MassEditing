@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="sale_order_backend" name="sale_order assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+               <script type="text/javascript" src="/mass_editing/static/src/js/mass_editing.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

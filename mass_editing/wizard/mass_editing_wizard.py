@@ -490,7 +490,7 @@ class MassEditingWizard(models.TransientModel):
                             data.write({split_key: tot_val})
             if values:
                 model_rec.write(values)
-        return super(MassEditingWizard, self).create({})
+        return super(MassEditingWizard, self).create(vals)
 
     @api.multi
     def action_apply(self):
