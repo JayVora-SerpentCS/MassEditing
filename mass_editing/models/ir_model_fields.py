@@ -13,10 +13,10 @@ class IrModelFields(models.Model):
         model_domain = []
         for domain in args:
             if (len(domain) > 2 and domain[0] == 'model_id' and
-                    isinstance(domain[2], basestring) and
+                    isinstance(domain[2], str) and
                     list(domain[2][1:-1])):
                 model_domain += [('model_id', 'in',
-                                  map(int, domain[2][1:-1].split(',')))]
+                                  [int(domain[2][1:-1].split(',')[0])])]
             else:
                 model_domain.append(domain)
         return super(IrModelFields, self).search(model_domain, offset=offset,

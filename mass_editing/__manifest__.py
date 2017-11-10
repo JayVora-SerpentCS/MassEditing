@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Mass Editing',
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'author': 'Serpent Consulting Services Pvt. Ltd., '
               'Odoo Community Association (OCA)',
     'contributors': [
@@ -22,6 +22,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/mass_editing_view.xml',
+        'views/template.xml'
     ],
     'installable': True,
     'application': False,
