@@ -6,7 +6,7 @@ import ast
 
 from odoo.tests import common
 from odoo.modules import registry
-from odoo.addons.mass_editing.hooks import uninstall_hook
+from ..hooks import uninstall_hook
 
 
 class TestMassEditing(common.TransactionCase):
@@ -152,11 +152,9 @@ class TestMassEditing(common.TransactionCase):
     def test_unlink_mass(self):
         """Test if related actions are removed when mass editing
         record is unlinked."""
-        mass_action_id = "ir.actions.act_window," + str(self.mass.id)
         self.mass.unlink()
-        value_cnt = self.env['ir.values'].search([('value', '=',
-                                                   mass_action_id)],
-                                                 count=True)
+        value_cnt = self.env['ir.actions.act_window'].search([
+            ('res_model', '=', 'mass.editing.wizard')], count=True)
         self.assertTrue(value_cnt == 0,
                         "Sidebar action must be removed when mass"
                         " editing is unlinked.")
@@ -165,10 +163,8 @@ class TestMassEditing(common.TransactionCase):
         """Test if related actions are removed when mass editing
         record is uninstalled."""
         uninstall_hook(self.cr, registry)
-        mass_action_id = "ir.actions.act_window," + str(self.mass.id)
-        value_cnt = self.env['ir.values'].search([('value', '=',
-                                                   mass_action_id)],
-                                                 count=True)
+        value_cnt = self.env['ir.actions.act_window'].search([
+            ('res_model', '=', 'mass.editing.wizard')], count=True)
         self.assertTrue(value_cnt == 0,
                         "Sidebar action must be removed when mass"
                         " editing module is uninstalled.")
