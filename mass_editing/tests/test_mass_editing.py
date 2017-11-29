@@ -6,7 +6,7 @@ import ast
 
 from odoo.tests import common
 from odoo.modules import registry
-from .hooks import uninstall_hook
+from ..hooks import uninstall_hook
 
 
 class TestMassEditing(common.TransactionCase):
