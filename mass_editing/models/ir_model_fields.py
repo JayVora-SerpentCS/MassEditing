@@ -22,8 +22,8 @@ class IrModelFields(models.Model):
                     model_domain += [('model_id', 'in', model_ids)]
                 else:
                     model_domain.append(domain)
-        return super(IrModelFields, self).search(args=model_domain, 
+        return super(IrModelFields, self).search(args=model_domain,
                                                  offset=offset,
-                                                 limit=limit, 
+                                                 limit=limit,
                                                  order=order,
                                                  count=count)
