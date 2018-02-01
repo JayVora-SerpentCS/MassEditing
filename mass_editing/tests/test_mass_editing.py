@@ -20,15 +20,15 @@ class TestMassEditing(common.TransactionCase):
         self.partner_model = model_obj.\
             search([('model', '=', 'res.partner')])
         self.user_model = model_obj.search([('model', '=', 'res.users')])
-        """Calling the Search method without context for
-        the Search from the List view of the Fields."""
+        # Calling the Search method without context for
+        # the Search from the List view of the Fields.
         self.fields_model = self.env['ir.model.fields'].\
             search([('model_id', '=', self.partner_model.id),
                     ('name', 'in', ['email', 'phone', 'category_id', 'comment',
                                     'country_id', 'customer', 'child_ids',
                                     'title'])])
-        """Calling the Search method with context for the Search
-        model_id field related fields in the fields_ids."""
+        # Calling the Search method with context for the Search
+        # model_id field related fields in the fields_ids.
         self.fields_model = self.env['ir.model.fields'].\
             with_context({'mass_edit': True}).\
             search([('model_id', '=', self.partner_model.id),
