@@ -6,8 +6,7 @@ odoo.define('mass_editing.mass_editing', function (require) {
     BasicModel.include({
         /**
          * parse the server values to javascript framwork
-         *
-         * @param {[string]} fieldNames
+         * @param {String} fieldNames
          * @param {Object} element the dataPoint used as parent for the created
          *   dataPoints
          * @param {Object} data the server data to parse
