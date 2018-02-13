@@ -257,8 +257,8 @@ class MassEditingWizard(models.TransientModel):
     def create(self, vals):
         model_name = self._context.get('active_model')
         active_ids = self._context.get('active_ids')
-        model_id = self.env['ir.model'].search([
-                ('model', '=', self._context.get('active_model'))])
+        model_id = self.env['ir.model'].search(
+            [('model', '=', self._context.get('active_model'))])
         if model_name and active_ids:
             values = {}
             for key, val in vals.items():
