@@ -421,6 +421,8 @@ class MassEditingWizard(models.TransientModel):
             fields_obj = self.env['ir.model.fields']
             model_obj = self.env[self._context.get('active_model')]
             model_rec = model_obj.browse(self._context.get('active_ids'))
+            model_id = self.env['ir.model'].search([
+                ('model', '=', self._context.get('active_model'))])
             values = {}
             for key, val in vals.items():
                 if key.startswith('selection_'):
@@ -437,7 +439,24 @@ class MassEditingWizard(models.TransientModel):
                                 m2m_list.append((3, m2m_id))
                             values.update({split_key: m2m_list})
                     elif val in ['remove_o2m', 'remove_m2m_all']:
-                        values.update({split_key: [(5, 0, [])]})
+                        # model_fieds will return the particular model
+                        # in order to get the field of the model and its relation.
+                        model_fields = self.env['ir.model.fields'].search(
+                            [('name', '=', split_key),
+                             ('model_id', '=', model_id and model_id.id)])
+                        # field_model is relation of Object Relation
+                        field_model = tools.ustr(model_fields and
+                                                 model_fields.relation)
+                        # field relation is relation field of O2m
+                        field_relation = tools.ustr(
+                            model_fields and
+                            model_fields.relation_field)
+                        # remove_ids is return O2m field particular ids
+                        remove_ids = self.env[field_model].search(
+                            [(field_relation, 'in',
+                              self._context.get('active_ids'))])
+                        o2m_list = [(2, rmv_id.id) for rmv_id in remove_ids]
+                        values.update({split_key: o2m_list})
                     elif val == 'add':
                         if vals.get(split_key, False):
                             m2m_list = []
