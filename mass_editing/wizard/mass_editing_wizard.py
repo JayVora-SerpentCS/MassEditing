@@ -440,7 +440,8 @@ class MassEditingWizard(models.TransientModel):
                             values.update({split_key: m2m_list})
                     elif val in ['remove_o2m', 'remove_m2m_all']:
                         # model_fieds will return the particular model
-                        # in order to get the field of the model and its relation.
+                        # in order to get the field of the model
+                        # and its relation.
                         model_fields = self.env['ir.model.fields'].search(
                             [('name', '=', split_key),
                              ('model_id', '=', model_id and model_id.id)])
