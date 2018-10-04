@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+        <template id="mass_edit_backend" name="mass_edit assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+               <script type="text/javascript" src="/mass_editing/static/src/js/mass_edit.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>
