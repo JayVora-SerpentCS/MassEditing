@@ -19,6 +19,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/mass_editing_view.xml',
+        'views/template.xml',
     ],
     'installable': True,
     'application': False,
