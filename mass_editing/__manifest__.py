@@ -15,7 +15,7 @@
     'license': 'GPL-3 or any later version',
     'summary': 'Mass Editing',
     'uninstall_hook': 'uninstall_hook',
-    'depends': ['web'],
+    'depends': ['base', 'web'],
     'data': [
         'security/ir.model.access.csv',
         'views/mass_editing_view.xml',
