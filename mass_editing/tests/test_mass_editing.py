@@ -129,7 +129,7 @@ class TestMassEditing(common.TransactionCase):
         self.assertNotEqual(self.partner.category_id, False,
                             'Partner\'s category should be removed.')
         # Add m2m categories
-        dist_categ_id = self.env.ref('base.res_partner_category_13').id
+        dist_categ_id = self.env.ref('base.res_partner_category_12').id
         vals = {
             'selection__category_id': 'add',
             'category_id': [[6, 0, [dist_categ_id]]],

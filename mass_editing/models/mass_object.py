@@ -35,7 +35,7 @@ class MassObject(models.Model):
         model_list = []
         if self.model_id:
             model_obj = self.env['ir.model']
-            model_list = [self.model_id.id]
+            model_list = self.model_id.ids
             active_model_obj = self.env[self.model_id.model]
             if active_model_obj._inherits:
                 model_names = active_model_obj._inherits.keys()
