@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record model="ir.ui.view" id="view_mass_object_form">
+    <record id="view_mass_object_form" model="ir.ui.view">
         <field name="name">mass.object.form</field>
         <field name="model">mass.object</field>
         <field name="arch" type="xml">
@@ -42,7 +42,7 @@
                     <notebook colspan="4">
                         <page string="Fields">
                             <field name="field_ids" context="{'mass_edit':True}" colspan="4" nolabel="1"
-                            domain="[('ttype', 'not in', ['reference', 'function', 'monetary']), ('model_id', 'in', model_list)]"/>
+                            domain="[('ttype', 'not in', ['reference', 'function', 'monetary', 'one2many']), ('model_id', 'in', model_list)]"/>
                         </page>
                         <page string="Advanced" attrs="{'invisible':[('ref_ir_act_window_id','=',False)]}">
                             <group colspan="2" col="2">
@@ -55,7 +55,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_mass_object_tree">
+    <record id="view_mass_object_tree" model="ir.ui.view">
         <field name="name">mass.object.tree</field>
         <field name="model">mass.object</field>
         <field name="arch" type="xml">
@@ -66,31 +66,17 @@
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="action_mass_object_form">
+    <record id="action_mass_object" model="ir.actions.act_window">
         <field name="name">Mass Editing</field>
         <field name="res_model">mass.object</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_mass_object_tree"/>
-    </record>
-
-    <record id="action_mass_object_form_view1" model="ir.actions.act_window.view">
-        <field eval="10" name="sequence"/>
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_mass_object_tree"/>
-        <field name="act_window_id" ref="action_mass_object_form"/>
-    </record>
-    <record id="action_mass_object_form_view2" model="ir.actions.act_window.view">
-        <field eval="20" name="sequence"/>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_mass_object_form"/>
-        <field name="act_window_id" ref="action_mass_object_form"/>
     </record>
 
     <menuitem id="menu_mass_editing" name="Mass Editing"
         parent="base.menu_administration" sequence="6"/>
 
-    <menuitem id="menu_mass_object_view" action="action_mass_object_form"
+    <menuitem id="menu_mass_object_view" action="action_mass_object"
         parent="menu_mass_editing"/>
 
 </odoo>
